@@ -31,10 +31,15 @@ end)
 -- Display a minigame
 --- @param data table
 Minigame = function(data)
-    if lib.skillCheck(data.difficulty, data.inputs) then
-        return true
-    end
-    return false
+    local success = false
+
+    -- updated skillcheck with new script
+    -- assuming that the function here is pulling from the config.lua file for config of the difficulty
+    exports['skillchecks']:startAlphabetGame(data.timeout, data.numKeys, function(result)
+        success = result
+    end)
+
+    return success
 end
 
 -- Display a progress bar
