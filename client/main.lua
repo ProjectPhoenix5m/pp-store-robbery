@@ -52,7 +52,7 @@ local function InitiateRegisterRobbery()
     lib.requestAnimDict(dict)
     while not HasAnimDictLoaded(dict) do Wait(0) end
     TaskPlayAnim(cache.ped, dict, anim, 8.0, 8.0, -1, 51, 1.0, false, false, false)
-    local skillcheck = Minigame(Config.Registers.minigame)
+    local skillcheck = MinigamePick(Config.Registers.MinigamePick)
     ClearPedTasks(cache.ped)
     if not skillcheck then
         TriggerServerEvent('lation_247robbery:DoesLockpickBreak')
@@ -95,7 +95,7 @@ end
 
 -- Function to handle hacking the computer if required
 local function InitiateComputerHack()
-    activeComputer = false -- Deactive target
+    activeComputer = true -- Deactive target
     if failedHack > Config.Computers.maxAttempts then
         activeRegister = false
         activeComputer = false
@@ -137,7 +137,7 @@ local function InitiateComputerHack()
             ShowNotification(Strings.Notify.failedHack, 'error')
         end
     else
-        local skillcheck = Minigame(Config.Computers.minigame)
+        local skillcheck = MinigameHack(Config.Computers.MinigameHack)
         if not skillcheck then
             ClearPedTasks(cache.ped)
             activeComputer = true

@@ -81,31 +81,27 @@ Config.Registers = {
     -- Set the required item name below needed to rob a cash register
     item = 'lockpick',
     -- Customize the minigame (skillcheck) difficulty below
-    minigame = {
-        -- Set the skillcheck difficulty levels below
-        -- You can set 'easy', 'medium' or 'hard' in any order
-        -- And in any amount/quantity - Learn more about the skillcheck
-        -- Here: https://overextended.dev/ox_lib/Modules/Interface/Client/skillcheck
-        timeout = { '10000' },
-        -- The 'inputs' are the keys that will be used for the skillcheck
-        -- Minigame and can be set to any key or keys of your choice
-        numKeys = { '20' }
+
+    MinigamePick = {
+        timeout = 20000,
+        numLocks = 12,
+        numLevels = 4
     },
     -- After a successful register robbery, what item do you want to reward
     -- And how much of it? Set the item = 'name' below and min/max quantites
     -- (this can also can be account, such as: 'cash', 'money' or 'bank')
-    reward = { item = 'black_money', min = 1000, max = 1000 },
+    reward = { item = 'black_money', min = 1000, max = 5000 },
     -- If a player fails to successfully lockpick the register
     -- There is a chance that their lockpick will break. In percentage,
     -- What chance do you want their lockpick to break? To never break, set 0
     -- To break every time, set 100
-    breakChance = 50,
+    breakChance = 15,
     -- After a player succesfully robs a register, there is this "noteChance" they
     -- "Find" the safe's PIN "under the register" and can skip the computer hacking
     -- Step if found. In percentage, what chance do they have to find this note?
     noteChance = 10
-}
 
+}
 ----------------------------------------------
 --        🖥️ Setup computer hacking
 ----------------------------------------------
@@ -119,17 +115,13 @@ Config.Computers = {
     -- The skillcheck hack with a series of questions the player must answer correctly
     questionnaire = false,
     -- Customize the minigame (skillcheck) difficulty below
-    minigame = {
-        -- Set the skillcheck difficulty levels below
-        -- You can set 'easy', 'medium' or 'hard' in any order
-        -- And in any amount/quantity - Learn more about the skillcheck
-        -- Here: https://overextended.dev/ox_lib/Modules/Interface/Client/skillcheck
-        difficulty = { 'easy', 'easy', 'easy', 'easy', 'easy','easy', },
-        -- The 'inputs' are the keys that will be used for the skillcheck
-        -- Minigame and can be set to any key or keys of your choice
-        inputs = { 'W', 'A', 'S', 'D' }
+    MinigameHack = {
+        timeout = 10000,
+        numKeys = 30
     },
+
 }
+
 
 ----------------------------------------------
 --        🔐 Setup safe robbery
@@ -143,7 +135,7 @@ Config.Safes = {
     -- After a successful safe robbery, what item do you want to reward
     -- And how much of it? Set the item = 'name' below and min/max quantites
     -- (this can also can be account, such as: 'cash', 'money' or 'bank')
-    reward = { item = 'black_money', min = 2000, max = 7000 },
+    reward = { item = 'black_money', min = 5000, max = 10000 },
 }
 
 ----------------------------------------------

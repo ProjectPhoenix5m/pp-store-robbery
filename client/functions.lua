@@ -30,17 +30,25 @@ end)
 
 -- Display a minigame
 --- @param data table
-Minigame = function(data)
+MinigameHack = function(data)
     local success = false
-
-    -- updated skillcheck with new script
-    -- assuming that the function here is pulling from the config.lua file for config of the difficulty
     exports['skillchecks']:startAlphabetGame(data.timeout, data.numKeys, function(result)
         success = result
     end)
-
+    Wait(data.timeout + 1)
     return success
 end
+
+--- @param data table
+MinigamePick = function(data)
+    local success = false
+    exports['skillchecks']:startLockpickingGame(data.timeout, data.numLocks, data.numLevels, function(result)
+        success = result
+    end)
+    Wait(data.timeout + 1)
+    return success
+end
+
 
 -- Display a progress bar
 --- @param data table Config.Animations.X
